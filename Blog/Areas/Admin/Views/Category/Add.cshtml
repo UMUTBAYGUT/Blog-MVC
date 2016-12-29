@@ -1,0 +1,265 @@
+﻿
+@model Blog.Areas.Admin.Models.CategoryModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage.cshtml";
+}
+
+    <!-- BEGIN PAGE HEAD-->
+    <div class="page-head">
+        <!-- BEGIN PAGE TITLE 
+        <div class="page-title">
+            <h1>
+                FIELD
+                <small>Add a field</small>
+            </h1>
+        </div>-->
+        <!-- END PAGE TITLE -->
+        <!-- BEGIN PAGE TOOLBAR -->
+        <div class="page-toolbar">
+            <!-- BEGIN THEME PANEL -->
+            <div class="btn-group btn-theme-panel">
+                <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-settings"></i>
+                </a>
+                <div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <h3>HEADER</h3>
+                            <ul class="theme-colors">
+                                <li class="theme-color theme-color-default active" data-theme="default">
+                                    <span class="theme-color-view"></span>
+                                    <span class="theme-color-name">Dark Header</span>
+                                </li>
+                                <li class="theme-color theme-color-light " data-theme="light">
+                                    <span class="theme-color-view"></span>
+                                    <span class="theme-color-name">Light Header</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 seperator">
+                            <h3>LAYOUT</h3>
+                            <ul class="theme-settings">
+                                <li>
+                                    Theme Style
+                                    <select class="layout-style-option form-control input-small input-sm">
+                                        <option value="square">Square corners</option>
+                                        <option value="rounded" selected="selected">Rounded corners</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    Layout
+                                    <select class="layout-option form-control input-small input-sm">
+                                        <option value="fluid" selected="selected">Fluid</option>
+                                        <option value="boxed">Boxed</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    Header
+                                    <select class="page-header-option form-control input-small input-sm">
+                                        <option value="fixed" selected="selected">Fixed</option>
+                                        <option value="default">Default</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    Top Dropdowns
+                                    <select class="page-header-top-dropdown-style-option form-control input-small input-sm">
+                                        <option value="light">Light</option>
+                                        <option value="dark" selected="selected">Dark</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    Sidebar Mode
+                                    <select class="sidebar-option form-control input-small input-sm">
+                                        <option value="fixed">Fixed</option>
+                                        <option value="default" selected="selected">Default</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    Sidebar Menu
+                                    <select class="sidebar-menu-option form-control input-small input-sm">
+                                        <option value="accordion" selected="selected">Accordion</option>
+                                        <option value="hover">Hover</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    Sidebar Position
+                                    <select class="sidebar-pos-option form-control input-small input-sm">
+                                        <option value="left" selected="selected">Left</option>
+                                        <option value="right">Right</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    Footer
+                                    <select class="page-footer-option form-control input-small input-sm">
+                                        <option value="fixed">Fixed</option>
+                                        <option value="default" selected="selected">Default</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END THEME PANEL -->
+        </div>
+        <!-- END PAGE TOOLBAR -->
+    </div>
+    <!-- END PAGE HEAD-->
+    <!-- BEGIN PAGE BREADCRUMB -->
+    <ul class="page-breadcrumb breadcrumb">
+        <li>
+            <a href="index.html">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span class="active">Field</span>
+        </li>
+    </ul>
+    <!-- END PAGE BREADCRUMB -->
+    <!-- BEGIN PAGE BASE CONTENT -->
+    <div class="row">
+        <div class="col-md-11">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet light portlet-fit portlet-form bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class=" icon-layers font-green"></i>
+                        <span class="caption-subject font-green sbold uppercase">Add a Field</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <!-- BEGIN FORM-->
+                    <form action="" class="form-horizontal" id="" method="post">
+                        <div class="form-body">
+                            <div class="alert alert-danger display-hide">
+                                <button class="close" data-close="alert"></button> You have some form errors. Please check below.
+                            </div>
+                            <div class="alert alert-success display-hide">
+                                <button class="close" data-close="alert"></button> Your form validation is successful!
+                            </div>
+
+
+
+                            <div class="form-group form-md-input">
+                                <label class="col-md-3 control-label" for="form_control_1">Type</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" name="parent">
+                                        <option value="NULL">Select</option>
+                                       @foreach (var kat in ViewBag.Category)
+                                       {
+                                        <option value="@kat.Category.Id"> @kat.Name</option>
+
+                                       }
+                                    </select>
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+                         
+                            <div class="form-group form-md-input">
+                                <label class="col-md-3 control-label" for="form_control_1">Active</label>
+                                <div class="col-md-9">
+                                    <label class="mt-checkbox mt-checkbox-outline">
+                                        <input type="checkbox" value="true" name="active">
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <br>
+                            <h3>Translation Data</h3>
+                            <br>
+                            <ul class="nav nav-tabs">
+                                @{
+                                    Boolean control = true;
+                                } 
+                                @foreach (var lang in Model.Languages)
+                                {
+                                    <li @if(control) { @Html.Raw("class='active'")
+                                            control = false;
+                                        }>
+                                        <a href="#tab_1_@lang.Id" data-toggle="tab"> @lang.Name </a>
+                                    </li>
+                                }
+
+
+                            </ul>
+                            <div class="tab-content">
+  
+                            @{
+                                Boolean control2 = true;
+                            }   
+                
+                                @foreach (var lang in Model.Languages)
+                                {
+                                    <div class="tab-pane fade @if(control2) { @Html.Raw("active in");
+                                            control2 = false;
+                                        }" id="tab_1_@lang.Id">
+                                        <br>
+                                        <div class="form-group form-md-input">
+                                            <label class="col-md-3 control-label" for="form_control_1">
+                                                 Name
+                                                <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" placeholder="" name="name_@lang.Id" id="form_control_1">
+                                                <div class="form-control-focus"> </div>
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-md-input">
+                                            <label class="col-md-3 control-label" for="form_control_2">
+                                                Slug
+                                                <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" placeholder="" name="slug_@lang.Id" id="form_control_2">
+                                                <div class="form-control-focus"> </div>
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                       
+
+                                    </div>
+                                }
+                              
+                      
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="btn green">Save</button>
+                                    <button type="reset" class="btn default">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>
+    </div>
+    <!-- END PAGE BASE CONTENT -->
+
+@section scriptFooter{
+    
+     <!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="~/Areas/Admin/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="~/Areas/Admin/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script src="~/Areas/Admin/assets/global/scripts/app.min.js" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="~/Areas/Admin/assets/pages/scripts/form-validation-md.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+    
+    
+    }

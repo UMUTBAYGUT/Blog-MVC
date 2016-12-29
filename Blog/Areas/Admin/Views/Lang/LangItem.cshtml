@@ -1,0 +1,85 @@
+﻿@model List<Blog.Areas.Admin.Models.ValueResxModel>
+
+@{
+    ViewBag.Title = "LangItem";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>LangItem</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ValueResxModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       @foreach (var c in Model)
+       {
+        <label> @c.Key =</label><input type="text" name="@c.Key" value="@c.Value" class="normal" key="@c.Key"/><br/>
+
+       }
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+                <button type="button">Button</button>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scriptfooter{
+    
+<script src="~/Areas/Admin/assets/js/jquery.json.js"></script>
+<script src="~/Areas/Admin/assets/js/json2.js"></script>
+    <script>
+        $(document)
+            .ready(function() {
+                $("form button")
+                    .click(function() {
+                        var veri = $("input[class='degisen']").serializeArray();
+                        var veri2 = $.toJSON(veri);
+
+
+                          $.ajax({
+                                url: "/Admin/Lang/LangItem/",
+                                method: "POST",
+                                data: { veri: veri2 ,slug : '@ViewBag.LangSlug' }
+
+                            })
+                            .done(function() {
+                                console.log("succes");
+                            });
+                    });
+
+
+                $("input")
+                    .change(function() {
+                        $(this)
+                            .attr({
+                                class: 'degisen'
+                            });
+                    });
+            });
+
+
+    </script>
+
+    @*<script>
+$(document).ready(function(){
+    $("input").change(function(){
+        $(this).attr({
+          class :'degisen'
+        });
+    });
+});
+</script>*@
+
+}

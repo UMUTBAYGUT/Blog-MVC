@@ -1,0 +1,32 @@
+﻿@using Resource
+@using DAL
+@model IEnumerable<Lang>
+<nav id="primary-menu">
+
+    <ul>
+        <li>
+            <a href="@Url.Action("Index","Home")">
+                <div tkey="Home">
+                   
+                </div>
+            </a>
+
+        </li>
+        <li class="mega-menu">
+            <a href="#">
+                <div>Pages</div>
+            </a>
+        </li>
+        @{
+            foreach (var lang in Model)
+            {            
+                    <li>@Html.ActionLink(lang.Name, "Change", "Language", new { languageSelect = lang.Slug, actionn = Url.GetAction(), seolink = Url.GetSeoLink() }, null)</li>
+                              
+            }
+        }
+       
+    </ul>
+
+
+
+</nav>
